@@ -5,7 +5,7 @@ body, html {
     overflow-x: hidden;
 }
 
-top-section {
+.top-section {
     width: 100%; display: flex; flex-direction: column;
     align-items: center; padding: 10px 0; background: white; border-bottom: 1px solid #ddd;
 }
@@ -27,10 +27,7 @@ top-section {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    flex: 1;                 /* cada columna ocupa lo mismo */
-    min-width: 0;            /* permite que se encoja */
-    width: auto;
-    gap: 6px;
+    width: 200px; 
 }
 
 .fuel-btn {
@@ -197,60 +194,37 @@ margin:auto;
     .top-section {
         width: 100%;
         padding: 8px 4px;
-        overflow-x: auto;
-    }
-
-    .main-controls-wrapper {
-        gap: 8px;
-        min-width: min-content;
     }
 
     /* columnas de combustibles más compactas */
     .columns-container {
         display: flex;
         width: 100%;
-        gap: 2px;
-        flex-wrap: nowrap;
-        min-width: min-content;
+        gap: 4px;
     }
 
     .fuel-column {
         flex: 1;                 /* cada columna ocupa lo mismo */
         min-width: 0;            /* permite que se encoja */
-        width: auto;
-        gap: 6px;
     }
 
     .fuel-btn {
-        width: 100%;
+        width: 50%;
         min-width: 0;
-        font-size: 10px;
+        font-size: 11px;
         padding: 6px 4px;
-        flex-shrink: 0;
     }
 
     .stat-box {
         min-width: 0;
-        font-size: 9px;
-        height: 40px;
-        padding: 3px;
-        width: 100%;
-    }
-
-    .stat-label {
-        font-size: 8px;
-    }
-
-    .stat-value {
-        font-size: 11px;
+        font-size: 10px;
+        height: 42px;
     }
 
     .breakdown-box {
         min-width: 0;
-        font-size: 7px;
-        padding: 2px;
-        width: 100%;
-        line-height: 1.2;
+        font-size: 8px;
+        padding: 3px;
     }
 
     /* mapa más ancho */
