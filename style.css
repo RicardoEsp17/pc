@@ -53,8 +53,9 @@ body, html {
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 50%;          /* mitad de la pantalla */
-    margin: 0 auto;      /* lo centra */
+    width: 95%;            /* Casi todo el ancho en móviles */
+    max-width: 640px;      /* Se ajusta al ancho aproximado de los 3 botones + gaps */
+    margin: 0 auto;        /* Centrado horizontal */
 }
 
 .sidebar-left {
@@ -180,25 +181,28 @@ margin:auto;
 }
 .map-section {
     width: 100%;
-    height: 55vh;   /* altura del mapa */
-    padding: 15px;
+    height: 55vh;
+    padding: 15px 0;      /* Quitamos el padding lateral para que llegue al borde del contenedor */
+    box-sizing: border-box;
+}
+
+.list-section {           /* Asegúrate de tener o añadir esta clase si no existe */
+    width: 100%;
+    padding: 15px 0;
     box-sizing: border-box;
 }
 @media (max-width: 768px) {
     .main-content {
-        flex-direction: column;
-        height: auto;
-        overflow: visible;
+        width: 90%;       /* Un poco de margen en los bordes de la pantalla del móvil */
+        max-width: 450px; /* Ancho típico de los controles en vertical */
     }
 
-    .map-container-wrapper {
-        width: 100%;
-        height: 400px; /* Altura obligatoria para que Leaflet se renderice */
-        order: -1; /* El mapa se queda arriba */
+    .map-section {
+        height: 350px;    /* Altura fija cómoda para móviles */
     }
 
-    .sidebar-left {
-        width: 100%;
-        height: auto;
+    .main-controls-wrapper {
+        flex-direction: column; /* Apila los combustibles si el móvil es muy estrecho */
+        align-items: center;
     }
 }
