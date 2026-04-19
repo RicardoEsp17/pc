@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Updated Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios de Carburantes España</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stats-label-main">
-        <h1>Welcome to Our Website</h1>
+
+    <div class="top-section">
+        <header><h1>Precios de Carburantes</h1></header>
+        <div class="main-controls-wrapper">
+    <div class="fuel-column">
+        <button id="btn-gas95" class="fuel-btn btn-gas95" onclick="selectFuel(this, 'gas95')">Gas 95</button>
+        <div class="stat-group">
+            <div class="stat-box stat-box-gas95">
+                <span class="stat-label">Gas 95</span>
+                <span id="avg-gas95" class="stat-value">-- €/L</span>
+            </div>
+            <div class="breakdown-box" id="breakdown-gas95">
+                <div>Materias Primas: <span class="val">--</span></div>
+                <div>I. Hidrocarburo: <span class="val">--</span></div>
+                <div>IVA (21%): <span class="val">--</span></div>
+            </div>
+        </div>
     </div>
-    <div>
-        <p>Content not related to Media Nacional.</p>
+    <div class="fuel-column">
+        <button id="btn-dizel" class="fuel-btn btn-dizel" onclick="selectFuel(this, 'dizel')">Dizel</button>
+        <div class="stat-group">
+            <div class="stat-box stat-box-dizel">
+                <span class="stat-label">Dizel</span>
+                <span id="avg-dizel" class="stat-value">-- €/L</span>
+            </div>
+            <div class="breakdown-box" id="breakdown-dizel">
+                <div>Materias Primas: <span class="val">--</span></div>
+                <div>I. Hidrocarburo: <span class="val">--</span></div>
+                <div>IVA (21%): <span class="val">--</span></div>
+            </div>
+        </div>
     </div>
+    <div class="fuel-column">
+        <button id="btn-dizel-plus" class="fuel-btn btn-dizel-plus" onclick="selectFuel(this, 'dizel_plus')">Dizel +</button>
+        <div class="stat-group">
+            <div class="stat-box stat-box-dizel-plus">
+                <span class="stat-label">Dizel +</span>
+                <span id="avg-dizel-plus" class="stat-value">-- €/L</span>
+            </div>
+            <div class="breakdown-box" id="breakdown-dizel_plus">
+                <div>Materias Primas: <span class="val">--</span></div>
+                <div>I. Hidrocarburo: <span class="val">--</span></div>
+                <div>IVA (21%): <span class="val">--</span></div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+    <div class="map-section">
+        <div id="map"></div>
+    </div>
+
+    <div class="list-section">
+        <div class="search-container">
+            <input type="text" id="input-localidad" placeholder="Escribe una localidad..." />
+            <button onclick="buscarLocalidad()">Buscar</button>
+        </div>
+
+        <div id="sidebar-lista">
+            <p style="padding: 20px; color: #666;">Cargando datos...</p>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,8 +1,204 @@
-.main-controls-wrapper {
-    justify-content: center;
-    align-items: center;
+body, html {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex; flex-direction: column;
+    overflow-x: hidden;
+}
+
+.top-section {
+    width: 100%; display: flex; flex-direction: column;
+    align-items: center; padding: 10px 0; background: white; border-bottom: 1px solid #ddd;
+}
+
+.main-controls-wrapper { display: flex; align-items: flex-end; gap: 20px; margin-top: 10px; }
+
+.stats-label-main {
+    background: #333; color: white; border-radius: 8px; font-size: 11px;
+    width: 80px; text-align: center; height: 58px; display: flex; align-items: center; justify-content: center;
 }
 
 .columns-container {
-    gap: 0;
+    display: flex;
+    gap: 2px;
+    align-items: flex-start;
+}
+.fuel-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 200px; 
+}
+
+.fuel-btn {
+    min-width: 110px; padding: 10px; border: none; border-radius: 8px; 
+    color: white; font-weight: bold; cursor: pointer; opacity: 0.6;
+}
+
+.btn-gas95 { background: #28a745; }
+.btn-dizel { background: #333; }
+.btn-dizel-plus { background: #dc3545; }
+.fuel-btn.active { opacity: 1; transform: scale(1.05); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+.stat-box {
+    min-width: 110px; padding: 5px; border-radius: 8px; text-align: center;
+    border: 1px solid #ddd; height: 50px; display: flex; flex-direction: column; justify-content: center;
+}
+.stat-box-gas95 { border-top: 4px solid #28a745; background: #f1f9f3; }
+.stat-box-dizel { border-top: 4px solid #333; background: #f4f4f4; }
+.stat-box-dizel-plus { border-top: 4px solid #dc3545; background: #fdf2f3; }
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 50%;          /* mitad de la pantalla */
+    margin: 0 auto;      /* lo centra */
+}
+
+.sidebar-left {
+    width: 100%;
+    height: 50vh;   /* la lista ocupa la otra mitad */
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.search-container { display: flex; gap: 10px; margin-bottom: 15px; }
+.search-container input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+.search-container button { padding: 10px 15px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; }
+
+/* MARCO DE LA LISTA */
+#sidebar-lista {
+    flex: 1; overflow-y: auto; background: #fff;
+    border: 5px solid #333; border-radius: 15px; padding: 10px;
+    display: flex; flex-direction: column; gap: 10px;
+}
+
+/* RECUADROS NEGROS DE LA LISTA */
+.gas-item { 
+    background: #333; color: white; padding: 12px; border-radius: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; transition: 0.2s;
+}
+.gas-item:hover { background: #444; transform: translateX(5px); }
+.gas-name { font-weight: bold; display: block; font-size: 13px; }
+.gas-address { 
+    font-size: 11px; 
+    color: #bbb; 
+    display: block; /* Asegura que la dirección ocupe su propia línea si es necesario */
+    margin-top: 2px;
+}
+
+/* MARCO DEL MAPA */
+.map-container-wrapper {
+    width: 100%;
+    height: 50vh;   /* el mapa ocupa la mitad de la pantalla */
+    padding: 15px;
+    box-sizing: border-box;
+}
+#map {
+    width: 100%;
+    height: 100%;
+    border: 5px solid #333;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- ESTILOS MEJORADOS PARA MARCADORES --- */
+.custom-gas-marker { background: none; border: none; }
+
+.marker-content {
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.logo-wrapper {
+    flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+
+.marker-logo {
+    max-width: 100%; max-height: 100%; object-fit: contain; /* Ajusta sin cortar */
+}
+
+.marker-price {
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+}
+
+/* Semáforos */
+.price-low { color: #5efc82; font-weight: bold; }
+.price-medium { color: #ffeb3b; font-weight: bold; }
+.price-high { color: #ff5252; font-weight: bold; }
+
+.marker-price.price-low { color: #1e7e34; }
+.marker-price.price-medium { color: #856404; }
+.marker-price.price-high { color: #bd2130; }
+
+.stat-group {
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.breakdown-box {
+    font-size: 10px;
+    color: #555;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    line-height: 1.4;
+    width: 140px; /* Ajustado para que coincida con el ancho visual del precio */
+    box-sizing: border-box;
+}
+
+.breakdown-box div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.breakdown-box .val {
+    font-weight: bold;
+    color: #333;
+    margin-left: 4px;
+}
+.contenedor{
+width:1200px;
+margin:auto;
+}
+.map-section {
+    width: 100%;
+    height: 55vh;   /* altura del mapa */
+    padding: 15px;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .map-container-wrapper {
+        width: 100%;
+        height: 400px; /* Altura obligatoria para que Leaflet se renderice */
+        order: -1; /* El mapa se queda arriba */
+    }
+
+    .sidebar-left {
+        width: 100%;
+        height: auto;
+    }
 }
