@@ -185,60 +185,20 @@ margin:auto;
     box-sizing: border-box;
 }
 @media (max-width: 768px) {
-
-    /* el contenido usa todo el ancho en móvil */
     .main-content {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .map-container-wrapper {
         width: 100%;
+        height: 400px; /* Altura obligatoria para que Leaflet se renderice */
+        order: -1; /* El mapa se queda arriba */
     }
 
-    .top-section {
+    .sidebar-left {
         width: 100%;
-        padding: 8px 4px;
+        height: auto;
     }
-
-    /* columnas de combustibles más compactas */
-    .columns-container {
-        display: flex;
-        width: 100%;
-        gap: 4px;
-    }
-
-    .fuel-column {
-        flex: 1;                 /* cada columna ocupa lo mismo */
-        min-width: 0;            /* permite que se encoja */
-    }
-
-    .fuel-btn {
-        width: 50%;
-        min-width: 0;
-        font-size: 11px;
-        padding: 6px 4px;
-    }
-
-    .stat-box {
-        min-width: 0;
-        font-size: 10px;
-        height: 42px;
-    }
-
-    .breakdown-box {
-        min-width: 0;
-        font-size: 8px;
-        padding: 3px;
-    }
-
-    /* mapa más ancho */
-    .map-section {
-        width: 100%;
-        height: 60vh;
-        padding: 8px;
-    }
-
-    /* lista ocupa el resto */
-    .list-section {
-        width: 100%;
-        height: 40vh;
-        padding: 8px;
-    }
-
 }
